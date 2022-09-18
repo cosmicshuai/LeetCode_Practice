@@ -19,7 +19,6 @@ class Solution:
             else:
                 rightMax.append(rightMax[-1])        
         rightMax = rightMax[::-1]
-        print(leftMax, rightMax)
         ans = 0
         for i in range(n):
             ans += max(0, min(leftMax[i], rightMax[i]) - height[i])
