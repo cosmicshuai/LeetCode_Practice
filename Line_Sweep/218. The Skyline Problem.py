@@ -27,3 +27,29 @@ class Solution:
             if not ans or ans[-1][1] != -heights[0]:
                 ans.append([x, -heights[0]])
         return ans
+
+import heapq
+"""
+
+"""
+class Solution2:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        corners = set()
+        for l, r, h in buildings:
+            corners.add((l, -h, r))
+            corners.add((r, 0, 1))
+        
+        corners = list(corners)
+        corners.sort()
+        heights = [(0, float('inf'))]
+        ans = []
+        
+        for x, h, r in corners:
+            while x >= heights[0][1]:
+                heapq.heappop(heights)
+            if h < 0:
+                heapq.heappush(heights, (h, r))
+            
+            if not ans or ans[-1][1] != -heights[0][0]:
+                ans.append([x, -heights[0][0]])
+        return ans
