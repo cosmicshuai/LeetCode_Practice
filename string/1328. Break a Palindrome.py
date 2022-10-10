@@ -12,9 +12,8 @@ class Solution:
             return first + second[0:-1] + "b"
 
         for i, c in enumerate(first):
-            t = first[0:i] + "a" + first[i+1::]
-            if t < ans:
-                ans = t
-                flag = False
-            
+            if c != "a":
+                ans =  first[0:i] + "a" + first[i+1::]
+                break
+                
         return ans + second
