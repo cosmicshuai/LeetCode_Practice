@@ -24,8 +24,7 @@ class Solution:
                 stack.append(stack.pop() * num)
             else:
                 stack.append(int(stack.pop() / num))
-            
-        print(elements)
+       
         def process(eles):
             n = len(eles)
             i = 0
@@ -47,13 +46,6 @@ class Solution:
                     return sum(stack), i
                 i += 1
             operate(stack, op, cur)
-            print(stack)
             return sum(stack)
         
         return process(elements)
-                    
-
-
-s = "1+(32-23/12)+8"
-S = Solution()
-print(S.calculate(s))
